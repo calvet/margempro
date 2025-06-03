@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MargemPro - Consulta Automatizada de Margens Consignáveis</title>
+    <meta name="description" content="Sistema de consulta automatizada de margens consignáveis para correspondentes bancários. Consulte CONSIG RN e UP BRASIL com rapidez e eficiência.">
+    <meta name="keywords" content="margem consignável, consulta consig rn, up brasil, empréstimo consignado, correspondente bancário, consulta automatizada, margem rotativo, cartão benefício, software consignado, consulta margem, crédito consignado">
+    <meta name="author" content="MargemPro">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.margempro.com.br/">
+    <meta property="og:title" content="MargemPro - Consulta Automatizada de Margens Consignáveis">
+    <meta property="og:description" content="Sistema de consulta automatizada de margens consignáveis para correspondentes bancários. Consulte CONSIG RN e UP BRASIL com rapidez e eficiência.">
+    <meta property="og:image" content="images/favicon.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.margempro.com.br/">
+    <meta property="twitter:title" content="MargemPro - Consulta Automatizada de Margens Consignáveis">
+    <meta property="twitter:description" content="Sistema de consulta automatizada de margens consignáveis para correspondentes bancários. Consulte CONSIG RN e UP BRASIL com rapidez e eficiência.">
+    <meta property="twitter:image" content="images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <style>
+        :root {
+            --primary: #2563EB;
+            --primary-dark: #1E40AF;
+            --accent: #F97316;
+            --accent-dark: #EA580C;
+            --success: #10B981;
+            --danger: #EF4444;
+            --light: #F9FAFB;
+            --dark: #1F2937;
+            --gray: #6B7280;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            height: 80px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .logo img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo span {
+            color: var(--accent);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            height: 100%;
+            align-items: center;
+        }
+        nav ul li {
+            margin-left: 30px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        .btn-accent {
+            background-color: var(--accent);
+        }
+        .btn-accent:hover {
+            background-color: var(--accent-dark);
+        }
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 160px 0 100px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        .hero p {
+            font-size: 20px;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        .hero-image {
+            max-width: 80%;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .problem-solution {
+            padding: 100px 0;
+            background-color: white;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        .section-title p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .problem-solution-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .problem-solution-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .problem-solution-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        .problem-solution-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        .problem-solution-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        .problem-solution-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .features {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .feature-icon i {
+            color: white;
+            font-size: 24px;
+        }
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .feature-card p {
+            color: var(--gray);
+        }
+        .demo {
+            padding: 100px 0;
+            background-color: white;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .demo-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .demo-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .demo-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .demo-caption {
+            padding: 20px;
+            background-color: white;
+        }
+        
+        .demo-caption h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .demo-caption p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        /* Video Demo */
+        .video-demo {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 60px auto 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .video-placeholder {
+            background-color: var(--dark);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        
+        .video-placeholder h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .video-placeholder p {
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+        
+        /* How it Works */
+        .how-it-works {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 60px;
+        }
+        
+        .step {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            margin-top: 10px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .step p {
+            color: var(--gray);
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 60px;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .pricing-card.popular {
+            border-color: var(--primary);
+            position: relative;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .price span {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--gray);
+        }
+        
+        .pricing-features {
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .pricing-feature {
+            margin-bottom: 15px;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+        }
+        
+        .pricing-feature i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+        
+        .pricing-cta {
+            margin-top: 30px;
+        }
+        
+        /* FAQ */
+        .faq {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .faq-grid {
+            margin-top: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background-color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+            background-color: white;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 1000px;
+        }
+        
+        /* CTA */
+        .cta {
+            padding: 100px 0;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 6px;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 20px;
+                height: auto;
+            }
+            
+            .logo {
+                margin-bottom: 20px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                height: auto;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+                height: auto;
+            }
+            
+            .hero {
+                padding: 120px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            .problem-solution-content {
+                flex-direction: column;
+            }
+            .step {
+                min-width: 100%;
+            }
+            .pricing-card {
+                min-width: 100%;
+            }
+        }
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            nav {
+                display: none;
+                width: 100%;
+            }
+            nav.active {
+                display: block;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo1.png" alt="MargemPro Logo" height="60">
+            </div>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#features">Funcionalidades</a></li>
+                    <li><a href="#demo">Demonstração</a></li>
+                    <li><a href="#pricing">Preços</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#cta" class="btn btn-accent">Experimente Grátis</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <h1 class="animate">Automatize suas consultas de margem consignável</h1>
+            <p class="animate delay-1">O MargemPro é a solução definitiva para correspondentes bancários e vendedores de crédito consignado que desejam aumentar sua produtividade com consultas automatizadas ao CONSIG RN e UP BRASIL.</p>
+            <div class="hero-buttons animate delay-2">
+                <a href="#cta" class="btn btn-accent">Comece Agora - 7 Dias Grátis</a>
+                <a href="#demo" class="btn btn-outline">Ver Demonstração</a>
+            </div>
+            <div class="hero-image animate delay-3">
+                <a href="images/screenshot1.png" data-lightbox="hero" data-title="Dashboard do MargemPro">
+                    <img src="images/screenshot1.png" alt="Dashboard do MargemPro">
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="problem-solution" id="problem-solution">
+        <div class="container">
+            <div class="section-title">
+                <h2>Transforme sua rotina de consultas</h2>
+                <p>Economize tempo e aumente seus resultados com nossa solução automatizada</p>
+            </div>
+            <div class="problem-solution-content">
+                <div class="problem-solution-text">
+                    <h3>O problema que resolvemos</h3>
+                    <p>Correspondentes bancários e vendedores de crédito consignado perdem horas preciosas realizando consultas manuais no CONSIG RN e UP BRASIL. Esse processo manual é tedioso, sujeito a erros e limita drasticamente a quantidade de clientes que podem ser atendidos diariamente.</p>
+                    <p>Além disso, a falta de um sistema centralizado para gerenciar clientes e suas margens dificulta o acompanhamento e a organização do trabalho, resultando em oportunidades perdidas e menor produtividade.</p>
+                    <h3>Nossa solução</h3>
+                    <p>O MargemPro automatiza completamente o processo de consulta de margens consignáveis no CONSIG RN e UP BRASIL, permitindo que você consulte dezenas de clientes em minutos, não em horas.</p>
+                    <p>Com nosso sistema, você pode importar listas de clientes, realizar consultas em lote, gerar relatórios detalhados e exportar dados para análise posterior. Tudo isso em uma interface intuitiva e fácil de usar, instalada localmente em seu computador para garantir a segurança dos dados.</p>
+                </div>
+                <div class="problem-solution-image">
+                    <a href="images/screenshot3.png" data-lightbox="solution" data-title="Consulta de margem no MargemPro">
+                        <img src="images/screenshot3.png" alt="Consulta de margem no MargemPro">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Funcionalidades Principais</h2>
+                <p>Tudo o que você precisa para otimizar seu trabalho com consignados</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Consulta Automatizada</h3>
+                    <p>Realize consultas automáticas ao CONSIG RN e UP BRASIL sem intervenção manual, economizando horas de trabalho.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Gerenciamento de Clientes</h3>
+                    <p>Cadastre, organize e acompanhe seus clientes em um único lugar, com todas as informações relevantes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-export"></i>
+                    </div>
+                    <h3>Exportação de Dados</h3>
+                    <p>Exporte dados de clientes com margem disponível para planilhas e relatórios personalizados.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Dashboard Intuitivo</h3>
+                    <p>Visualize métricas importantes como total de clientes, clientes com margem e valores médios em um painel completo.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-import"></i>
+                    </div>
+                    <h3>Importação em Lote</h3>
+                    <p>Importe listas de clientes para consulta em lote, aumentando significativamente sua produtividade.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Relatórios Detalhados</h3>
+                    <p>Gere relatórios completos das consultas realizadas, facilitando a análise e tomada de decisão.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="demo" id="demo">
+        <div class="container">
+            <div class="section-title">
+                <h2>Veja o MargemPro em ação</h2>
+                <p>Conheça a interface intuitiva e as principais telas do sistema</p>
+            </div>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <a href="images/screenshot0.png" data-lightbox="demo" data-title="Tela de Login">
+                        <img src="images/screenshot0.png" alt="Tela de Login" class="demo-image">
+                    </a>
+                    <div class="demo-caption">
+                        <h3>Tela de Login</h3>
+                        <p>Interface da tela de login onde somente usuários autorizados podem utilizar.</p>
+                    </div>
+                </div>
+                <div class="demo-item">
+                    <a href="images/screenshot1.png" data-lightbox="demo" data-title="Dashboard Principal">
+                        <img src="images/screenshot1.png" alt="Dashboard" class="demo-image">
+                    </a>
+                    <div class="demo-caption">
+                        <h3>Dashboard Principal</h3>
+                        <p>Visualize métricas importantes como total de clientes, clientes com margem e valores médios.</p>
+                    </div>
+                </div>
+                <div class="demo-item">
+                    <a href="images/screenshot8.png" data-lightbox="demo" data-title="Captura de Margens">
+                        <img src="images/screenshot8.png" alt="Captura de Margens" class="demo-image">
+                    </a>
+                    <div class="demo-caption">
+                        <h3>Captura de Margens</h3>
+                        <p>Visualize a tela de captura de margens com diversas configurações customizáveis.</p>
+                    </div>
+                </div>
+                <div class="demo-item">
+                    <a href="images/screenshot33.png" data-lightbox="demo" data-title="Consulta de Margem">
+                        <img src="images/screenshot33.png" alt="Consulta de Margem" class="demo-image">
+                    </a>
+                    <div class="demo-caption">
+                        <h3>Consulta de Margem</h3>
+                        <p>Interface de consulta detalhada com informações sobre margem de empréstimo, rotativo e cartão.</p>
+                    </div>
+                </div>
+                <div class="demo-item">
+                    <a href="images/screenshot5.png" data-lightbox="demo" data-title="Gerenciamento de Clientes">
+                        <img src="images/screenshot5.png" alt="Edição de Cliente" class="demo-image">
+                    </a>
+                    <div class="demo-caption">
+                        <h3>Gerenciamento de Clientes</h3>
+                        <p>Cadastre e edite informações dos clientes de forma simples e organizada.</p>
+                    </div>
+                </div>
+                <div class="demo-item">
+                    <a href="images/screenshot_9.png" data-lightbox="demo" data-title="Exportação de Dados">
+                        <img src="images/screenshot_9.png" alt="Exportação de Dados" class="demo-image">
+                    </a>
+                    <div class="demo-caption">
+                        <h3>Exportação de Dados</h3>
+                        <p>Exporte dados de clientes com margem para análise posterior em planilhas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="video-demo" id="video-demo">
+        <div class="container">
+            <div class="section-title">
+                <h2>Demonstração em Vídeo</h2>
+                <p>Veja o sistema em funcionamento do login até a consulta</p>
+            </div>
+            <div class="video-container">
+                <video controls>
+                    <source src="videos/demonstracao.mp4" type="video/mp4">
+                    Seu navegador não suporta a reprodução de vídeos.
+                </video>
+            </div>
+        </div>
+    </section>
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>Como Funciona</h2>
+                <p>Processo simples e eficiente para maximizar seus resultados</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Cadastre seus clientes</h3>
+                    <p>Adicione clientes individualmente ou importe uma lista completa para consulta em lote.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Inicie a consulta automática</h3>
+                    <p>Com um único clique, o sistema consulta automaticamente o CONSIG RN e UP BRASIL para todos os clientes selecionados.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Analise os resultados</h3>
+                    <p>Visualize os resultados organizados, identificando rapidamente clientes com margem disponível.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Exporte e entre em ação</h3>
+                    <p>Exporte a lista de clientes com margem e inicie o contato para oferecer as melhores condições de crédito.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Planos e Preços</h2>
+                <p>Escolha o plano ideal para o seu negócio</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Plano Mensal</h3>
+                    <div class="price">R$ 197<span>/mês</span></div>
+                    <p>Ideal para quem quer testar sem compromisso</p>
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Consultas ilimitadas</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Gerenciamento de clientes</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Exportação de dados</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Suporte via WhatsApp e email</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Sem fidelidade</span>
+                        </div>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="#cta" class="btn btn-outline">Experimente Grátis</a>
+                    </div>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Mais Popular</div>
+                    <h3>Plano Trimestral</h3>
+                    <div class="price">R$ 177<span>/mês</span></div>
+                    <p>Economize R$ 60 no período</p>
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Consultas ilimitadas</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Gerenciamento de clientes</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Exportação de dados</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Suporte via WhatsApp e email</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Pagamento trimestral: R$ 531</span>
+                        </div>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="#cta" class="btn">Experimente Grátis</a>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <h3>Plano Anual</h3>
+                    <div class="price">R$ 147<span>/mês</span></div>
+                    <p>Economize R$ 600 no período</p>
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Consultas ilimitadas</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Gerenciamento de clientes</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Exportação de dados</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Suporte prioritário</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Pagamento anual: R$ 1.764</span>
+                        </div>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="#cta" class="btn btn-outline">Experimente Grátis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Perguntas Frequentes</h2>
+                <p>Tire suas dúvidas sobre o MargemPro</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Como funciona o período gratuito de 7 dias?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Você terá acesso completo a todas as funcionalidades do sistema por 7 dias, sem qualquer cobrança. Após esse período, caso deseje continuar utilizando, você poderá escolher um dos planos disponíveis. Não há cobrança automática e você pode cancelar quando quiser.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Como o sistema é instalado e utilizado?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O MargemPro é um software instalável que roda localmente no seu computador, garantindo maior segurança para os dados confidenciais dos seus clientes. Após a contratação, você receberá instruções detalhadas para instalação e configuração do sistema.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Preciso ter acesso prévio ao CONSIG RN e UP BRASIL?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, é necessário que você já tenha acesso como consignatário no CONSIG RN (https://consig.rn.gov.br/) e no UP BRASIL (https://www.upbrasil.com/upconsig/). O MargemPro automatiza o processo de consulta, mas utiliza suas credenciais de acesso a esses sistemas.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Como é feito o pagamento?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O pagamento é realizado via PIX, de forma simples e segura. Após o período gratuito, você receberá as instruções para pagamento caso deseje continuar utilizando o sistema.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Existe limite de consultas ou clientes?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não há limite para o número de clientes que você pode cadastrar ou consultas que pode realizar. No entanto, recomendamos consultar no máximo 30 clientes por vez para evitar bloqueios nos sistemas externos (CONSIG RN e UP BRASIL).</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Posso cancelar minha assinatura a qualquer momento?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, não há fidelidade. Você pode cancelar sua assinatura a qualquer momento, sem multas ou taxas adicionais. No entanto, ao cancelar, você perderá o acesso ao software até que renove sua assinatura.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Como funciona o suporte técnico?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oferecemos suporte técnico via WhatsApp e email em horário comercial (segunda a sexta, das 8h às 18h). Nosso tempo médio de resposta é de até 2 horas úteis. O suporte inclui correção de bugs e melhorias contínuas enquanto você for cliente.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        É possível personalizar o sistema ou integrar com outros bancos/portais?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, oferecemos serviços de personalização e integração com outros bancos/portais de consignado mediante análise e orçamento específico. Demandas customizadas de adaptação do sistema ou integração a novos bancos/portais consignados podem ter um custo adicional, que será avaliado caso a caso.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2>Comece a usar o MargemPro hoje mesmo</h2>
+            <p>Experimente gratuitamente por 7 dias e transforme sua produtividade nas consultas de margem consignável</p>
+            <div id="form-messages" class="form-messages"></div>
+            <form id="contactForm" class="cta-form" action="https://formspree.io/f/mgvyejyn" method="POST">
+                <div class="form-group">
+                    <input type="text" name="nome" placeholder="Nome completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="empresa" placeholder="Nome da empresa (opcional)">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="E-mail" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="whatsapp" placeholder="WhatsApp (com DDD)" required>
+                </div>
+                <button type="submit" class="btn btn-accent">Começar Período Gratuito</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MargemPro</h3>
+                    <p>Sistema de consulta automatizada de margens consignáveis para correspondentes bancários e vendedores de crédito consignado.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#features">Funcionalidades</a></li>
+                        <li><a href="#demo">Demonstração</a></li>
+                        <li><a href="#pricing">Preços</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><a href="https://wa.me/5584996641274" target="_blank"><i class="fab fa-whatsapp"></i> (84) 99664-1274</a></li>
+                        <li><a href="mailto:suporte@margempro.com.br"><i class="far fa-envelope"></i> suporte@margempro.com.br</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MargemPro. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <style>
+        .form-messages {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        .form-messages.success {
+            display: block;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .form-messages.error {
+            display: block;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+    <script>
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                faqItems.forEach(faqItem => {
+                    faqItem.classList.remove('active');
+                });
+                
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        $(document).ready(function(){
+            $('input[name="whatsapp"]').mask('(00) 00000-0000', {
+                placeholder: 'WhatsApp (com DDD)'
+            });
+        });
+        
+        const form = document.getElementById('contactForm');
+        const formMessages = document.getElementById('form-messages');
+        
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const formData = new FormData(form);
+                
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+
+                    throw new Error('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
+                })
+                .then(data => {
+                    formMessages.textContent = 'Formulário enviado com sucesso! Entraremos em contato em breve.';
+                    formMessages.className = 'form-messages success';
+                    
+                    form.reset();
+                    
+                    formMessages.scrollIntoView({ behavior: 'smooth' });
+                })
+                .catch(error => {
+                    formMessages.textContent = error.message;
+                    formMessages.className = 'form-messages error';
+                    
+                    formMessages.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        }
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    nav.classList.remove('active');
+                }
+            });
+        });
+        
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.feature-card, .demo-item, .step, .pricing-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animate');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            'albumLabel': "Imagem %1 de %2",
+            'fadeDuration': 300
+        });
+    </script>
+</body>
+</html>
