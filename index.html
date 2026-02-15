@@ -663,6 +663,21 @@
         .delay-3 {
             animation-delay: 0.6s;
         }
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            z-index: 999;
+            border-radius: 50%;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        .whatsapp-float img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
@@ -1126,6 +1141,13 @@
             </div>
         </div>
     </footer>
+    <a href="https://wa.me/5584996641274?text=Ola%20Margem%20Pro,%20gostaria%20de%20saber%20mais%20sobre%20os%20seus%20servicos"
+       class="whatsapp-float"
+       target="_blank"
+       aria-label="Fale conosco no WhatsApp">
+       
+       <img src="images/whatsapp-icon.png" alt="WhatsApp">
+    </a>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
